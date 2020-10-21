@@ -1,0 +1,196 @@
+<{% extends "layoutBase.html.j2" %}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to Ustraa Champions League</h1>
+<button id="refreshBtn" type="button" class="btn btn-outline-primary", onclick="reloadPage();">Generate New Groups</button>
+<br>
+
+<div class="row mt-5 mb-5">
+    <div class="col offset-1 ">
+    <h4>GROUP A</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupA.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1 ">
+    <h4>GROUP B</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupB.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1 ">
+    <h4>GROUP C</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupC.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1 ">
+    <h4>GROUP D</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupD.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    </div>
+<div class="clearfix"></div>
+<div class="row mt-5 mb-5">
+<div class="col offset-1">
+    <h4>GROUP E</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupE.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1">
+    <h4>GROUP F</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupF.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1">
+    <h4>GROUP G</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupG.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+    <div class="col offset-1">
+    <h4>GROUP H</h4>
+        <table id="table1" class="table table-bordered table-hover display w-auto" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Club Name</th> 
+                    <th>Club State</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data.groupH.teams %}
+            <tr>
+                <td>{{row.team}}</td>
+                <td>{{row.state}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>     
+         </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='node_modules/datatables.net-dt/css/jquery.dataTables.min.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+        $('table.display').DataTable(
+            {
+                 "ordering": false,
+                 "lengthChange": false
+
+            }
+        );
+        
+        } );
+
+        function reloadPage(){
+        location.reload(true);
+    }
+    </script>
+{% endblock %}
